@@ -28,6 +28,8 @@ Route::get('/compare', [productController::class, 'compare'])->name('compare');
 Route::get('/create', [productController::class, 'create']);
 Route::get('/products',[productController::class , 'products']);
 
+Route::get('/products/createe', 'ProductController@create')->name('products.createe');
+Route::post('/products', 'ProductController@store')->name('products.store');
 
 
 //Route::post('/compare', 'productController@compare')->name('compare');

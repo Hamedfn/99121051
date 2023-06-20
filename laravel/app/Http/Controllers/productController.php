@@ -25,7 +25,8 @@ class productController extends Controller
         return view ('prdct',[
             'product1' => $product1,
             'product2' => $product2,
-        ]);
+         ]);
+
 
 
     }
@@ -34,12 +35,37 @@ class productController extends Controller
         return View::make('create');
     }
 
-    public function addbook(Request $request)
+   /* public function addbook(Request $request)
     {
         Book::create($request->all());
         return redirect('/books');
     }
+*/
+    public function createe()
+    {
+        return view('products.createe');
+    }
 
+
+    public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'description' => 'required',
+        'price' => 'required|numeric',
+    ]);
+
+    $imagePath = $request->file('image')->store('public/images');
+    $product = new Product();
+    $product->name = $validatedData['name'];
+    $product->image = $imagePath;
+    $product->description = $validatedData['description'];
+    $product->price = $validatedData['price'];
+    $product->save();
+
+    return redirect('/products')->with('success', 'محصول جدید با موفقیت افزوده شد.');
+}
 
 
 }

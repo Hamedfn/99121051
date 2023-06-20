@@ -13,7 +13,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">id</th>
       <th scope="col">title</th>
       <th scope="col">price</th>
       <th scope="col">des</th>
@@ -22,7 +22,7 @@
   <tbody>
   @foreach ($products as $product)
   <tr>
-    <th scope="row">3</th>
+    <td>{{$product->id}}</td>
     <td>{{$product->title}}</td>
     <td>{{$product->price}}</td>
     <td>{{$product->describetion}}</td>
@@ -35,9 +35,36 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
 <form action="addbook" method="post">
     @csrf
 <input type="submit" name="submit" value="save">
+
+</form>
+
+<a href="{{ route('products.createe') }}" class="btn btn-primary">افزودن محصول جدید</a>
+
+
+<form method="POST" action="{{ route('products.store') }}">
+    @csrf
+    <div class="form-group">
+        <label for="name">نام محصول:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="image">تصویر محصول:</label>
+        <input type="file" class="form-control" id="image" name="image" required>
+    </div>
+    <div class="form-group">
+        <label for="description">توضیحات محصول:</label>
+        <textarea class="form-control" id="description" name="description"required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="price">قیمت محصول:</label>
+        <input type="number" class="form-control" id="price" name="price" required>
+    </div>
+    <button type="submit" class="btn btn-primary">ذخیره</button>
 </form>
 
 </body>
