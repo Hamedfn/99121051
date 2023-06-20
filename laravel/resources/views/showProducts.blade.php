@@ -37,11 +37,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
-<form action="addbook" method="post">
+<!--<form action="addbook" method="post">
     @csrf
 <input type="submit" name="submit" value="save">
 
-</form>
+</form> -->
 
 <a href="{{ route('products.createe') }}" class="btn btn-primary">افزودن محصول جدید</a>
 
